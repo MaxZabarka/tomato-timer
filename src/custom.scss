@@ -1,0 +1,8 @@
+// @import "../node_modules/bootstrap/scss/bootstrap";
+// Your variable overrides
+
+$theme-colors: (
+  "primary": #ff5249,
+  "secondary": rgba(255,255,255,0.2)
+);
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
