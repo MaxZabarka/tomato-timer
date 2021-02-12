@@ -21,8 +21,10 @@ class Slider extends Component {
 					<h3>{secondsToString(this.state.value)}</ h3 >
 				</div>
 				<input
+				disabled={this.props.disabled}
 				className={classes.slider}
-                step={30}
+				step={30}
+				min={30}
                 max={this.props.max}
 					ref={this.sliderRef}
 					onChange={this.onSliderChange.bind(this)}

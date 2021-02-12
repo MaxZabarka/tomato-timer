@@ -34,6 +34,9 @@
     align-items: center;
 
 }
+.disabled-sliders {
+    opacity: 0.5;
+}
 @media (max-width: 370px) {
 	.main-wrapper {
 		padding: 1rem 0.2rem;

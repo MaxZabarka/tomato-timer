@@ -21,10 +21,12 @@ class App extends Component {
 		longBreakInterval: 4,
 		pomosUntilLongBreak: 4,
 		percentage: 0,
+		disableTimers: false,
 	};
 	updateTimer = (type) => {
 		this.switchHeader.current.setState({ active: type });
 		this.timerRef.current.stopTimer();
+		this.setState({ disableTimers: false });
 		this.timerRef.current.setTimeLeft(this.state.times[type]);
 	};
 	timerFinished = () => {
@@ -55,21 +57,28 @@ class App extends Component {
 		}
 	};
 	updatePercentageHandler = (timeRemaining) => {
-		const percentage =
-			100 -
-			(timeRemaining /
-				this.state.times[this.switchHeader.current.state.active]) *
-				100;
-		this.setState({ percentage });
-	};
-	sliderOnChangeHandler = (value,type) => {
-		let newTimes = {...this.state.times}
-		newTimes[type] = value
-		this.setState({times:newTimes})
-		if (!this.timerRef.current.running()) {
-			this.timerRef.current.setTimeLeft(newTimes[type])
+		if (timeRemaining >= 0) {
+			console.log(
+				timeRemaining,
+				this.state.times[this.switchHeader.current.state.active]
+			);
+			const percentage =
+				100 -
+				(timeRemaining /
+					this.state.times[this.switchHeader.current.state.active]) *
+					100;
+			this.setState({ percentage });
 		}
-
+	};
+	sliderOnChangeHandler = (value, type) => {
+		if (!this.state.disableTimers) {
+			const newTimes = { ...this.state.times };
+			newTimes[type] = value;
+			this.setState({ times: newTimes });
+			if (type === this.switchHeader.current.state.active) {
+				this.timerRef.current.setTimeLeft(newTimes[type]);
+			}
+		}
 	};
 	render() {
 		return (
@@ -92,8 +101,14 @@ class App extends Component {
 							onUpdate={this.updatePercentageHandler}
 						/>
 						<StartStopButton
-							stop={() => this.timerRef.current.stopTimer()}
-							start={() => this.timerRef.current.startTimer()}
+							stop={() => {
+								this.timerRef.current.stopTimer();
+								this.setState({ disableTimers: false });
+							}}
+							start={() => {
+								this.timerRef.current.startTimer();
+								this.setState({ disableTimers: true });
+							}}
 							ref={this.switchRef}
 						/>
 						<p className={classes["pomos-remaining"]}>
@@ -102,8 +117,17 @@ class App extends Component {
 						</p>
 					</div>
 					<div className={classes["sliders-wrapper"]}>
-						<div className={classes["sliders"]}>
+						<div
+							className={
+								classes["sliders"] +
+								" " +
+								(this.state.disableTimers
+									? classes["disabled-sliders"]
+									: "")
+							}
+						>
 							<Slider
+								disabled={this.state.disableTimers}
 								type="pomo"
 								label="Work Duration"
 								default={this.state.times.pomo}
@@ -111,6 +135,7 @@ class App extends Component {
 								changedCallback={this.sliderOnChangeHandler}
 							/>
 							<Slider
+								disabled={this.state.disableTimers}
 								type="short"
 								label="Short Break"
 								default={this.state.times.short}
@@ -118,6 +143,7 @@ class App extends Component {
 								changedCallback={this.sliderOnChangeHandler}
 							/>
 							<Slider
+								disabled={this.state.disableTimers}
 								type="long"
 								label="Long Break"
 								default={this.state.times.long}
