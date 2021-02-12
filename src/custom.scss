@@ -1,7 +1,7 @@
 // @import "../node_modules/bootstrap/scss/bootstrap";
 // Your variable overrides
-
+$custom-range-track-bg:green;
 $theme-colors: (
-  "primary": #ff5249,
+  "primary":#ff5249,
 );
 @import "../node_modules/bootstrap/scss/bootstrap.scss";

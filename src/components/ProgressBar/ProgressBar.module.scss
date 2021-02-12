@@ -1,0 +1,9 @@
+@import "../../custom.scss";
+
+.ProgressBar {
+    border-radius: 0;
+    background-color: transparent;
+}
+.ProgressBar div {
+    background-color: lighten(map-get($theme-colors,primary),5%);
+}

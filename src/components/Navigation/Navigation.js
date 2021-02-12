@@ -8,7 +8,7 @@ const Navigation = () => {
 		<div className="Navigation navbar-dark">
 			<Navbar bg="primary">
 				<Navbar.Brand href="#home">
-					<strong>Tomagic</strong>
+					<strong>Pomomagic</strong>
 				</Navbar.Brand>
 				<Nav className="ml-auto">
 					<Icon type="github" size="2rem" />

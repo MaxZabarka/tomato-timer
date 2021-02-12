@@ -1,0 +1,11 @@
+@import "../../custom.scss";
+
+.Layout {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+
+	button {
+		margin: 0.5rem !important;
+	}
+}

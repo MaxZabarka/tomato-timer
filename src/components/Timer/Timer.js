@@ -1,33 +1,45 @@
 import React, { Component } from "react";
+import { secondsToString } from "../../helpers";
+import classes from "./Timer.module.scss";
 
 class Timer extends Component {
 	constructor(props) {
 		super(props);
-        this.state = { timeRemaining: 10 };
+		this.state = { timeRemaining: 25 * 60 };
 	}
-    
+
 	startTimer() {
 		this.intervalObject = setInterval(() => {
 			this.setState((prevState) => {
+				if (prevState.timeRemaining <= 0) {
+					this.props.timeUp();
+					this.stopTimer();
+				}
+				this.props.onUpdate(prevState.timeRemaining - 1);
 				return { timeRemaining: prevState.timeRemaining - 1 };
 			});
-		},1000);
+		}, 1000);
+	}
+	running = () => {
+		return this.intervalObject;
 	};
-
-	stopTimer ()  {
-        this.props.stop()
+	stopTimer() {
+		this.props.stop();
 		clearInterval(this.intervalObject);
-    };
-    setTimeLeft(timeLeft) {
-        this.setState({timeRemaining:timeLeft})
-    }
-    secondsToString(seconds) {
-        const displaySeconds = seconds % 60
-        const displayMinutes = (seconds-displaySeconds)/60
-        return `${displayMinutes}:${displaySeconds}`
-    }
+	}
+	setTimeLeft(timeLeft) {
+		this.setState(() => {
+			this.props.onUpdate(timeLeft);
+			return { timeRemaining: timeLeft };
+		});
+	}
+
 	render() {
-		return <h1>{this.secondsToString(this.state.timeRemaining)}</h1>;
+		return (
+			<h1 className={classes.Timer}>
+				{secondsToString(this.state.timeRemaining)}
+			</h1>
+		);
 	}
 }
 

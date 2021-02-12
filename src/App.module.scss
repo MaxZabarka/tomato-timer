@@ -1,0 +1,44 @@
+@import "./custom.scss";
+
+
+.pomos-remaining {
+	margin-top: 1rem;
+	color: map-get($theme-colors, primary);
+}
+.main-wrapper {
+	border: 2px solid map-get($theme-colors, primary);
+	padding: 2rem;
+	border-radius: 5px;
+
+	margin: auto;
+	margin-top: 1rem;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+}
+.sliders-wrapper {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: map-get($theme-colors, primary);
+}
+.sliders {
+
+    max-width: 750px;
+    width: 90%;
+    padding: 3rem 0;
+	color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+@media (max-width: 370px) {
+	.main-wrapper {
+		padding: 1rem 0.2rem;
+		width: 100%;
+	}
+}
+
+

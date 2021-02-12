@@ -1,0 +1,6 @@
+@import "../../custom.scss";
+
+.Timer {
+    margin-top: 1rem;
+    color: map-get($theme-colors, primary );
+}

@@ -1,0 +1,15 @@
+.SwitchHeader {
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+}
+.SwitchButton {
+    display: block;
+}
+@media (min-width:430px) {
+    /* Big screens */
+    .SwitchHeader {
+        flex-direction: row;
+    }
+
+}

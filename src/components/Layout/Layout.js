@@ -1,13 +1,13 @@
 import React from 'react';
 import Navigation from "../Navigation/Navigation"
-const layout = (props) => {
-    // this.inputElementRef = React.createRef();
+import "./Layout.scss"
 
+const layout = (props) => {
     return (
-        <React.Fragment>
+        <div className="Layout">
             <Navigation/>
             {props.children}
-        </React.Fragment>
+        </div>
     );
 };
 
