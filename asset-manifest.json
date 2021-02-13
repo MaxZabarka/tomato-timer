@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/tomato-timer/static/css/main.d7c5239c.chunk.css",
+    "main.js": "/tomato-timer/static/js/main.803cf0ea.chunk.js",
+    "main.js.map": "/tomato-timer/static/js/main.803cf0ea.chunk.js.map",
+    "runtime-main.js": "/tomato-timer/static/js/runtime-main.49d5b5e8.js",
+    "runtime-main.js.map": "/tomato-timer/static/js/runtime-main.49d5b5e8.js.map",
+    "static/css/2.150d169a.chunk.css": "/tomato-timer/static/css/2.150d169a.chunk.css",
+    "static/js/2.6d4af9a9.chunk.js": "/tomato-timer/static/js/2.6d4af9a9.chunk.js",
+    "static/js/2.6d4af9a9.chunk.js.map": "/tomato-timer/static/js/2.6d4af9a9.chunk.js.map",
+    "index.html": "/tomato-timer/index.html",
+    "static/css/2.150d169a.chunk.css.map": "/tomato-timer/static/css/2.150d169a.chunk.css.map",
+    "static/css/main.d7c5239c.chunk.css.map": "/tomato-timer/static/css/main.d7c5239c.chunk.css.map",
+    "static/js/2.6d4af9a9.chunk.js.LICENSE.txt": "/tomato-timer/static/js/2.6d4af9a9.chunk.js.LICENSE.txt",
+    "static/media/click.mp3": "/tomato-timer/static/media/click.5e1c3ce9.mp3",
+    "static/media/timeup.mp3": "/tomato-timer/static/media/timeup.15f605a9.mp3"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.49d5b5e8.js",
+    "static/css/2.150d169a.chunk.css",
+    "static/js/2.6d4af9a9.chunk.js",
+    "static/css/main.d7c5239c.chunk.css",
+    "static/js/main.803cf0ea.chunk.js"
+  ]
+}
