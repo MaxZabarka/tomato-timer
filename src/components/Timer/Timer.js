@@ -9,7 +9,6 @@ class Timer extends Component {
 	}
 
 	startTimer() {
-		console.log("created");
 		this.intervalObject = setInterval(() => {
 			this.setState((prevState) => {
 				if (prevState.timeRemaining <= 0) {
@@ -22,12 +21,10 @@ class Timer extends Component {
 		}, 1000);
 	}
 	running = () => {
-		console.log(this.intervalObject);
 		return this.intervalObject;
 	};
 	stopTimer() {
 		clearInterval(this.intervalObject);
-		console.log("cleared");
 		this.props.stop();
 	}
 	setTimeLeft(timeLeft) {

@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 class StartStopButton extends Component {
 	state = { started: false };
 	clickHandler = () => {
+		this.props.playClick()
 		this.setState((prevState) => {
 			if (prevState.started) {
 				this.props.stop();

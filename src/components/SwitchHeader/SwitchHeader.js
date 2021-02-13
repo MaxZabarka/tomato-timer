@@ -7,6 +7,7 @@ class SwitchHeader extends Component {
 		active: "pomo",
 	};
 	setActive(type) {
+		this.props.playClick()
 		this.setState({ active: type });
 		this.props.changed(type);
 	}

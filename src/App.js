@@ -7,6 +7,11 @@ import classes from "./App.module.scss";
 import ProgressBar from "./components/ProgressBar/ProgressBar";
 import Slider from "./components/Slider/Slider";
 
+const clickModule = require('./assets/sounds/click.mp3');
+const timeUpModule = require('./assets/sounds/timeup.mp3');
+const click = new Audio(clickModule.default)
+const timeUp = new Audio(timeUpModule.default)
+
 class App extends Component {
 	timerRef = React.createRef();
 	switchRef = React.createRef();
@@ -14,9 +19,9 @@ class App extends Component {
 
 	state = {
 		times: {
-			pomo: 25 * 60,
-			long: 15 * 60,
-			short: 5 * 60,
+			pomo: 1,
+			long: 1,
+			short:1,
 		},
 		longBreakInterval: 4,
 		pomosUntilLongBreak: 4,
@@ -30,6 +35,7 @@ class App extends Component {
 		this.timerRef.current.setTimeLeft(this.state.times[type]);
 	};
 	timerFinished = () => {
+		timeUp.play()
 		switch (this.switchHeader.current.state.active) {
 			case "pomo":
 				this.setState((prevState) => {
@@ -56,12 +62,14 @@ class App extends Component {
 				break;
 		}
 	};
+	playClickHandler() {
+		click.play()
+	}
+	playTimeUpHandler() {
+		timeUp.play()
+	}
 	updatePercentageHandler = (timeRemaining) => {
 		if (timeRemaining >= 0) {
-			console.log(
-				timeRemaining,
-				this.state.times[this.switchHeader.current.state.active]
-			);
 			const percentage =
 				100 -
 				(timeRemaining /
@@ -87,6 +95,7 @@ class App extends Component {
 					<ProgressBar percent={this.state.percentage} />
 					<div className={classes["main-wrapper"]}>
 						<SwitchHeader
+							playClick={this.playClickHandler}
 							ref={this.switchHeader}
 							changed={this.updateTimer}
 						/>
@@ -110,6 +119,7 @@ class App extends Component {
 								this.setState({ disableTimers: true });
 							}}
 							ref={this.switchRef}
+							playClick={this.playClickHandler}
 						/>
 						<p className={classes["pomos-remaining"]}>
 							Pomodoros until long break:{" "}
