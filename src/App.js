@@ -19,9 +19,9 @@ class App extends Component {
 
 	state = {
 		times: {
-			pomo: 1,
-			long: 1,
-			short:1,
+			pomo: 25*60,
+			long: 15*60,
+			short:5*60,
 		},
 		longBreakInterval: 4,
 		pomosUntilLongBreak: 4,
